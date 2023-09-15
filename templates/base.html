@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load markdown_deux_tags %}
+<html  lang="en" ng-app="GFO" ng-controller='GFOCtrl'>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/media/None/gfo.png" type="image/png" sizes="16x16">
+<meta name="theme-color" content="#7D669E">
+<meta name="apple-mobile-web-app-status-bar-style" content="#7D669E">
+<meta name="robots" content="noarchive">
+
+<title>{% block head_title %}{% endblock head_title %}</title>
+<meta name="description" content="{% block head_description %}{% endblock head_description %}">
+<meta name="keywords" content="{% block head_keywords %}{% endblock head_keywords %}">
+<meta name="Title" content="{% block meta_title %}{% endblock meta_title %}">
+<meta name="author" content="{% block head_auther %}{% endblock head_auther %}">
+<meta name="robots" content="noodp,noydir" />
+<link rel="canonical" href="{{request.build_absolute_uri}} ">
+<meta name="msvalidate.01" content="5726E326CB093289A700740C7370D63A" />
+
+
+<script type="text/javascript">
+
+    window._mNHandle = window._mNHandle || {};
+
+    window._mNHandle.queue = window._mNHandle.queue || [];
+
+    medianet_versionId = "3121199";
+
+</script>
+<script src="//contextual.media.net/dmedianet.js?cid=8CU815B5S" async="async"></script>
+
+<!-- fb open graph -->
+
+<meta property="og:title" content="{% block og_title %}{% endblock og_title %}">
+<meta property="og:description" content="{% block og_description %}{% endblock og_description %}">
+<meta property="og:url" content="{{request.build_absolute_uri}} ">
+<meta property="og:image" content="{% block fb_img_url %}{% endblock fb_img_url %}">
+<meta property="og:site_name" content="Globalforumonline">
+<meta property="og:type" content="article">
+
+<meta property="fb:app_id" content="550373872014486">
+<!-- fb open graph -->
+
+<!-- twitter card  -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Globalforumonl1">
+<meta name="twitter:creator" content="{{request.build_absolute_uri}}">
+<meta name="twitter:title" content="{% block tw_title %}{% endblock tw_title %}">
+<meta name="twitter:image" content="{% block tw_img_url %}{% endblock tw_img_url %}">
+<meta name="twitter:description" content="{% block tw_description %}{% endblock tw_description %}">
+<!-- twitter card end -->
+
+
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+<link rel='stylesheet' href='{% static "css/base.css" %}' />
+<style>
+
+{% block style %}{% endblock style %}
+</style>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.0&appId=550373872014486&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+{% block head_extra %} {% endblock head_extra %}
+</head>
+<body ng-cloak>
+
+<!--SIDENAV START-->
+
+
+ <md-sidenav class="md-sidenav-left" md-component-id="left"
+                ng-cloak class="md-sidenav-left md-whiteframe-4dp" style="position:fixed;
+ width:100%;">
+
+    <md-toolbar  style="background-color:#7D669E; " >
+        <div ng-href="\category" layout="column" class="md-toolbar-tools-bottom inset" layout-align="center center">
+            <div>  <span style="font-size: 24px; color: #fff; font-family:fontawesome; margin-left: 10;"><md-icon md-svg-src="/media/None/gfo.svg" style="margin-bottom:6px; margin-left:3px;"></md-icon></span>
+            </div>
+            <div style="font-size: 24px; color: #fff; font-family:fontawesome; margin-left: 10;">&nbspGFO</div>
+            
+        </div>
+    </md-toolbar>
+      <md-list style='font-color:#696969;'>
+
+           <md-list-item>
+                 <md-item flex>
+                <a ng-click="toggleLeft()" ng-href="/economy/">
+                    <md-item-content md-ink-ripple="#919191" layout="row" layout-align="start center">
+                        <div class="fa fa-money" style="color:#7d669ec4 ;">
+                            
+                        </div>
+                        <div class="inset">Economy
+                        </div>
+                    </md-item-content>
+                </a>
+            </md-item>
+        </md-list-item>
+        <md-list-item>
+                 <md-item flex>
+                <a ng-click="toggleLeft()" ng-href="/technology/">
+                    <md-item-content md-ink-ripple="#919191" layout="row" layout-align="start center">
+                       <div class="fa fa-cog" style="color:#7d669ec4;">
+                           
+                        </div> 
+                        <div class="inset">Technology
+                        </div>
+                    </md-item-content>
+                </a>
+            </md-item>
+        </md-list-item>
+                <md-list-item>
+                 <md-item flex>
+                <a ng-click="toggleLeft()" ng-href="/entertainment/">
+                    <md-item-content md-ink-ripple="#919191" layout="row" layout-align="start center">
+                       <div class="fa fa-smile-o" style="color:#7d669ec4;">
+                            
+                        </div>
+                        <div class="inset">Entertainment
+                        </div>
+                    </md-item-content>
+                </a>
+            </md-item>
+        </md-list-item>
+                <md-list-item>
+                 <md-item flex>
+                <a ng-click="toggleLeft()" ng-href="/business/">
+                    <md-item-content md-ink-ripple="#919191" layout="row" layout-align="start center">
+                      <div class="fa fa-handshake-o" style="color:#7d669ec4;">
+                         
+                        </div>
+                        <div class="inset">Business
+                        </div>
+                    </md-item-content>
+                </a>
+            </md-item>
+        </md-list-item>
+                <md-list-item>
+                 <md-item flex>
+                <a ng-click="toggleLeft()" ng-href="/startups/">
+                    <md-item-content md-ink-ripple="#919191" layout="row" layout-align="start center">
+                       <div class="fa fa-hand-peace-o" style="color:#7d669ec4;">
+                            
+                        </div> 
+                        <div class="inset">Startups
+                        </div>
+                    </md-item-content>
+                </a>
+            </md-item>
+        </md-list-item>
+                <md-list-item>
+                 <md-item flex>
+                <a ng-click="toggleLeft()" ng-href="/lifestyle/">
+                    <md-item-content md-ink-ripple="#919191" layout="row" layout-align="start center">
+                       <div class="fa fa-heartbeat" style="color:#7d669ec4;">
+                            
+                        </div>
+                        <div class="inset">Lifestyle
+                        </div>
+                    </md-item-content>
+                </a>
+            </md-item>
+        </md-list-item>
+             
+               <md-list-item>
+                 <md-item flex>
+                <a ng-click="toggleLeft()" ng-href="/special/">
+                    <md-item-content md-ink-ripple="#919191" layout="row" layout-align="start center">
+                        <div class="fa fa-star" style="color:#7d669ec4;">
+                            
+                        </div>
+                        <div class="inset">Today's Special
+                        </div>
+                    </md-item-content>
+                </a>
+            </md-item>
+        </md-list-item>
+           </md-list>
+         </md-sidenav>
+
+<!--SIDENAV END -->
+
+
+{% block content %} {% endblock content %}
+
+
+<div class="hl" hide-sm hide-xs></div>
+
+<!-- <div id="425328384">
+
+    <script type="text/javascript">
+
+        try {
+
+            window._mNHandle.queue.push(function (){
+
+                window._mNDetails.loadTag("425328384", "970x250", "425328384");
+
+            });
+
+        }
+
+        catch (error) {}
+
+    </script>
+
+</div> -->
+
+
+<!-- FOOTER START-->
+
+    <md-toolbar class="footer" style ="background-color: #7D669E; height: 280px; border-top-width:10px; border-top-color:#c481f4; margin-top: 50px"  layout="row" layout-xs="column">
+
+  <div  flex layout="column" style="padding-top: 30px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 20px;"layout-padding>
+     <div >
+     <span style="font-size: 30px; color: #fff; font-family:fontawesome; ">Globalforumonline<md-icon md-svg-src="/media/None/gfo.svg" style=" margin-top: 5px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 5px;"></md-icon></span></div>
+     <div layout='row' class="footer_text" >
+
+      <div><a href="/GFO/about/" id="about" style="color:#fff !important;; margin-right: 5px; ">About Us</a></div>
+      <div><a href="/GFO/contact/" id="contact" style="color:#fff !important; margin-right: 5px; ">Contact Us</a></div>
+      <!-- <div><a href="/GFO/newsletter/" style="color:#fff !important; margin-right: 5px; ">Newsletters</a></div> -->
+      <div><a href="/GFO/Terms/" style="color:#fff !important; margin-right: 5px; ">Terms</a></div>
+      <div><a href="/GFO/privacy/" style="color:#fff !important; margin-right: 5px; ">Privacy Policy</a></div>            
+     </div>
+
+  </div>
+  <div  layout='column' layout-align="start end" layout-align-xs="start start"  class="social" layout-padding>
+    <div layout='row' layout-padding>
+      <div>
+         <a href="https://www.facebook.com/globalforumonline/"><md-icon  class="toolbarSvg" md-svg-src="/media/None/fb.svg"></md-icon></a>
+      </div>
+         <div>
+         <a href="https://twitter.com/Globalforumonl1"><md-icon  class="toolbarSvg" md-svg-src="/media/None/tw.svg"></md-icon></a>
+      </div>
+        <div> 
+       <a href=""><md-icon  class="toolbarSvg" md-svg-src="/media/None/pnt.svg"></md-icon></a>
+      </div>
+    </div>
+    <div class="footer_text">
+      <span  >Copyright © 2019 Global forum online. All Rights Reserved</span> 
+    </div>
+      <div>
+      <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FGlobal-forum-online-985900874921584%2F&width=133&layout=button_count&action=like&size=large&show_faces=true&share=true&height=46&appId=550373872014486" width="133" height="46" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+      </div>
+    
+    
+  </div>
+  
+  </md-toolbar>
+
+
+<!--FOOTER END-->
+
+
+<!-- Angular Material requires Angular.js Libraries -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/marked/0.4.0/marked.min.js'></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".content-markdown").each(function(){
+            var content = $(this).text()
+            
+            var markedContent = marked(content)
+        
+            $(this).html(markedContent)
+    })
+    $(".content-markdown img").each(function(){
+            $(this).addClass("md-card-image");
+    })
+    $(".content-markdown img").each(function(){
+            $(this).addClass("detail_img");
+    })
+
+var links = document.links;
+
+for (var i = 0, linksLength = links.length; i < linksLength; i++) {
+   if (links[i].hostname != window.location.hostname) {
+       links[i].target = '_blank';
+       links[i].rel = 'nofollow';
+   }
+  
+}
+
+
+})
+
+</script>
+
+
+<script type="text/javascript">    
+    
+angular
+  .module('GFO', ['ngMaterial'])
+  .controller('GFOCtrl', function ($scope, $timeout, $mdSidenav) {
+    $scope.toggleLeft = buildToggler('left');
+    $scope.toggleRight = buildToggler('right');
+
+    function buildToggler(componentId) {
+      return function() {
+        $mdSidenav(componentId).toggle();
+      };
+    }
+  });
+  
+  </script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122653526-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-122653526-1');
+
+</script>
+
+          
+</body>
+</html>
+
+
+
+

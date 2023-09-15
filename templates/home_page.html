@@ -1,0 +1,448 @@
+{% extends "base.html" %}
+{% block head_title %}
+GFO | Technology, Economy, Lifestyle, Business, Startups latest stories {{block.super}}
+{% endblock head_title %}
+{% block head_description %}
+Globalforumonline is a platform which provides you latest stories and its analysis related to differents fields like Technology, market, Business, Finance, banking, health, future, startups etc {{block.super}}
+{% endblock head_description %}
+{% block head_keywords %}
+latest lechnology, startup stories, health problems, health tips, market news and analysis,
+Finance and banking related stories, finance news, Future market, future technology,Business, Lifestyle, startup ideas,
+{% endblock head_keywords %}
+{% block meta_title %}
+GFO | Technology, Economy, Lifestyle, Business, startups latest stories {{block.super}}
+{% endblock meta_title %}
+
+{% block content %}
+<md-toolbar class="md-hue-2 show-sm show-xs hide-gt-sm md-whiteframe-5dp" style="background-color:#7d669e">
+<div class="md-toolbar-tools" layout='row' ng-show="!show">
+<div>
+<md-icon ng-click="toggleLeft()" class="toolbarSvg" md-svg-src="/media/None/menu.svg"></md-icon>
+<a href="/">
+<span style="font-size:24px;color:#fff;margin-left:9px;font-family:fontawesome;margin-left:10">GFO</span>
+<md-icon md-svg-src="/media/None/gfo.svg" style="margin-top:0;margin-right:0;margin-bottom:4px;margin-left:5px"></md-icon></a>
+</div>
+<div style="position:absolute;right:0;margin-right:5px">
+<md-icon class="toolbarSvg" md-svg-src="/media/None/search.svg" ng-click="show=!show"></md-icon>
+</div>
+</div>
+<div class="md-toolbar-tools" ng-show="show">
+<md-button class="md-icon-button" ng-click="show=!show" aria-label="Menu">
+<md-icon class="md-default-theme" class="toolbarSvg" md-svg-src="/media/None/back.svg"></md-icon>
+</md-button>
+<form flex method='GET' action="/" style="padding:0;margin:0">
+<input class="searchInput" type="text" placeholder="Search For New Stories" value="{{request.GET.q}}" name="q" />
+<md-button ng-click="doSearch(search)" class="md-icon-button" aria-label="searchBtn" type="submit">
+<md-icon class="toolbarSvg" md-svg-src="/media/None/send.svg"></md-icon>
+</md-button>
+</form>
+</div>
+</md-toolbar>
+<md-toolbar class="hide-sm hide-xs md-whiteframe-6dp" style="background-color:#7d669e;font-weight:600">
+<div class="md-toolbar-tools" layout="row" ng-show="true">
+<a href="/"><div layout="row" layout-align="start center">
+<span style="font-size:24px;color:#fff;font-family:fontawesome;margin-left:10">GFO</span>
+<md-icon md-svg-src="/media/None/gfo.svg" style="margin-left:5px"></md-icon>
+</div></a>
+<div flex="5"></div>
+<div layout="row" hide-xs hide-sm style="padding-left:10px" ng-show="!foo">
+<a href="/economy/" class="category">Economy</a>
+<a href="/technology/" class="category">Technology</a>
+<a href="/entertainment/" class="category">Entertainment</a>
+<a href="/business/" class="category">Business</a>
+<a href="/lifestyle/" class="category">Lifestyle</a>
+<a href="/startups/" class="category">Startups</a>
+<a href="/special/" class="category">Today's Special</a>
+</div>
+<div style="position:absolute;right:0;margin-right:15px" ng-show="!foo" ng-click="foo=!foo">
+<md-icon style="" ng-click="" class="toolbarSvg" md-svg-src="/media/None/search.svg"></md-icon>
+</div>
+<div class="md-toolbar-tools" ng-show="foo">
+<form flex method='GET' action="/" style="padding:0;margin:0">
+<div style="background-color:white;width:75%;border-radius:5px">
+<input class="searchInput" type="text" placeholder="Search For New Stories" value="{{request.GET.q}}" name="q" />
+<md-icon style="position:absolute;right:24%;margin-top:5px" ng-click="foo=!foo" class="toolbarSvg" md-svg-src="/media/None/close.svg"></md-icon>
+<md-button style="position:absolute;right:13%" class="md-raised" value="SEARCH" type="submit"><md-icon style="height:28px;width:28px" md-svg-src="/media/None/desksearch.svg"></md-icon></md-button>
+</div>
+</form>
+</div>
+</div>
+</md-toolbar>
+
+<div style="margin:auto !important">
+
+<div id="224659742">
+    <script type="text/javascript">
+        try {
+            window._mNHandle.queue.push(function (){
+                window._mNDetails.loadTag("224659742", "728x90", "224659742");
+            });
+        }
+        catch (error) {}
+    </script>
+
+</div>
+</div>
+{% if request.GET.q %}
+{% if count == 0 %}
+<div layout="row" layout-xs="column" layout-sm="column" style="margin-top:15px">
+<div flex-gt-sm="70">
+<md-card>
+<md-card-title>
+<md-card-title-text layout="column" layout-align="center center">
+<h2 style="color:#67686b">Sorry we couldn't find any matches for '{{request.GET.q}}'</h2>
+<h3 style="color:#67686b">Maybe your search was too specific, please try searching with another term</h3>
+<md-icon layout-padding style="height:250px;width:250px" md-svg-src="/media/None/notfound.svg"></md-icon>
+</md-card-title-text>
+</md-card-title>
+</md-card>
+</div>
+<div>
+<div class="1-2" class="popular">
+<div style="padding-left:8px;padding-right:8px">
+<md-toolbar style="border-radius:6px;font-weight:bold;font-size:15px;background-color:#7d669e;margin-top:10px;height:15px!important" layout="row" layout-align="center center">Most Popular Right Now</md-toolbar>
+</div>
+
+
+<md-card>
+<div id="325262019">
+
+    <script type="text/javascript">
+
+        try {
+
+            window._mNHandle.queue.push(function (){
+
+                window._mNDetails.loadTag("325262019", "336x280", "325262019");
+
+            });
+
+        }
+
+        catch (error) {}
+
+    </script>
+
+</div>
+
+</md-card>
+
+
+{% for obj in popular%}
+<md-card>
+<div layout="row">
+{% if obj.image %}
+<div layout="row" layout-align="start center">
+<a href="{{ obj.get_absolute_url }}">
+<img layout-padding ng-src="{{ obj.image_thumbnail_2.url }}" style="height:90px;width:110px" alt="{{obj.image_description}}"></a></div>
+{% endif %}
+<div layout="column" flex>
+<div layout-align="start center">
+<md-card-title>
+<md-card-title-text>
+<a class="title_hover" style="font-weight:bold;font-size:13px;color:#67686b" href='{{ obj.get_absolute_url }}' font-family: "Titillium Web",Helvetica,Arial,sans-serif>{{ obj.title | truncatechars:85 }}</a>
+</md-card-title-text>
+</md-card-title>
+</div>
+<div layout="row" layout-align="end center">
+<md-card-actions>
+<span style="font-size:12px;color:#67686b;color:#67686b">&#128344; {{ obj.publish }}</span></md-card-actions>
+</div>
+</div>
+</div>
+</md-card>
+{% endfor %}
+
+
+<md-card>
+<div id="666316187">
+    <script type="text/javascript">
+        try {
+            window._mNHandle.queue.push(function (){
+                window._mNDetails.loadTag("666316187", "300x600", "666316187");
+            });
+        }
+        catch (error) {}
+    </script>
+</div>
+</md-card>
+
+
+</div>
+</div>
+</div>
+{% else %}
+<div layout="row" layout-xs="column" layout-sm="column" style="margin-top:15px">
+<div class="pblm" layout="row">
+<md-card>
+<md-content>
+<md-card-title>
+<md-card-title-text layout="row">
+<span class="md-headline">Search Result For <strong>'{{request.GET.q }}'</strong> ({{count}})</span>
+</md-card-title-text>
+</md-card-title>
+</md-content>
+
+
+{% for obj in latest%}
+<md-content>
+{% if obj.image %}
+<md-divider ng-if="!$last"></md-divider>
+<div layout="row">
+<div layout="row" layout-align="start center">
+<md-card-title-media>
+<div class="md-media-lg card-media">
+<a href="{{ obj.get_absolute_url }}">
+<img class="searchImg" layout-padding ng-src="{{ obj.image_thumbnail_1.url }}" alt="{{obj.image_description}}"></a>
+</div>
+</md-card-title-media>
+</div>
+{% endif %}
+<div>
+<md-list>
+<md-list-item class="md-3-line">
+<div class="md-list-item-text">
+<md-card-title-text layout="column">
+<a class="title_hover" style="font-weight:bold;font-size:21px;margin:.5em 0;color:#67686b;text-decoration:underline" href='/detail/{{ obj.slug}}/'>{{ obj.title | truncatechars:85 }} </a>
+<p>{{ obj.description | truncatechars:140}}</p>
+</md-card-title-text>
+<div layout="row">
+<span style="font-size:15px;padding-top:5px;padding-right:5px;padding-bottom:5px;padding-left:0;color:#67686b">&#128344; {{ obj.publish }}</span></div>
+</div>
+</md-list-item>
+</md-list></div>
+</div>
+</md-content>
+{%endfor%}
+{%endif%}
+</md-card>
+</div>
+{% if count != 0%}
+<div class="1-2" class="popular">
+<div style="padding-left:8px;padding-right:8px">
+<md-toolbar style="border-radius:6px;font-weight:bold;font-size:15px;background-color:#7d669e;margin-top:10px;height:15px!important" layout="row" layout-align="center center">Most Popular Right Now</md-toolbar>
+</div>
+
+<md-card>
+<div id="325262019">
+
+    <script type="text/javascript">
+
+        try {
+
+            window._mNHandle.queue.push(function (){
+
+                window._mNDetails.loadTag("325262019", "336x280", "325262019");
+
+            });
+
+        }
+
+        catch (error) {}
+
+    </script>
+
+</div>
+
+</md-card>
+
+{% for obj in popular%}
+<md-card>
+<div layout="row">
+{% if obj.image %}
+<div layout="row" layout-align="start center">
+<a href="{{ obj.get_absolute_url }}">
+<img layout-padding ng-src="{{ obj.image_thumbnail_2.url }}" style="height:90px;width:110px" alt="{{obj.image_description}}">
+</a>
+</div>
+{% endif %}
+<div layout="column" flex>
+<div layout-align="start center">
+<md-card-title>
+<md-card-title-text>
+<a class="title_hover" style="font-weight:bold;font-size:13px;color:#67686b" href='{{ obj.get_absolute_url }}' font-family: "Titillium Web",Helvetica,Arial,sans-serif>{{ obj.title | truncatechars:85 }}</a>
+</md-card-title-text>
+</md-card-title>
+</div>
+<div layout="row" layout-align="end center">
+<md-card-actions>
+<span style="font-size:12px;color:#67686b">&#128344; {{ obj.publish }}</span></md-card-actions>
+</div>
+</div>
+</div>
+</md-card>
+{% endfor %}
+
+
+<md-card>
+<div id="666316187">
+    <script type="text/javascript">
+        try {
+            window._mNHandle.queue.push(function (){
+                window._mNDetails.loadTag("666316187", "300x600", "666316187");
+            });
+        }
+        catch (error) {}
+    </script>
+</div>
+</md-card>
+
+
+
+</div>
+{% endif%}
+</div>
+<div class="pagination" layout="row" layout-align="center center" style="margin-top:15px">
+<span class="step-links">
+{% if latest.has_previous %}
+<a href="?page={{ latest.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><md-icon style="width:40px;height:40px" md-svg-src="/media/None/preview.svg"></md-icon></a>
+{% endif %}
+<span class="current" style="font-size:20px;font-weight:600">
+Page {{ latest.number }} of {{ latest.paginator.num_pages }}
+</span>
+{% if latest.has_next %}
+<a href="?page={{ latest.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><md-icon style="width:40px;height:40px" md-svg-src="/media/None/next.svg"></md-icon></a>
+{% endif %}
+</span>
+</div>
+{% else %}
+<div class="1" layout="column" layout-gt-sm="row" style="padding-top:15px">
+<div class="pblm" layout="column">
+<div class="1-1-1">
+{% for obj in main_latest %}
+<md-card>
+{% if obj.image %}
+<img ng-src="{{ obj.image.url }}" class="md-card-image home_img" alt="{{obj.image_description}}">{% endif %}
+<md-card-title>
+<md-card-title-text>
+<a class="title_hover" style="font-weight:bold;font-size:1.8em;color:#67686b" href='/detail/{{ obj.slug}}/'>{{ obj.title | truncatechars:85 }} </a>
+</md-card-title-text>
+</md-card-title>
+<md-card-actions layout="row" layout-align="start center">
+<a href="/detail/{{ obj.slug}}/" style="text-decoration:none;color:#5b5c5f;font-weight:normal"><p class="home_despt">{{obj.description}} <a href="/detail/{{ obj.slug}}/" style="text-decoration:none;color:#7d669e">Read more</a></p></a>
+</md-card-actions>
+<md-card-actions layout="row" layout-align="start center" layout-padding>
+<span>By-{{obj.user.user.first_name}} {{obj.user.user.last_name}}</span>
+<span style="font-size:16px;color:#67686b">&#128344; {{ obj.publish }}</span>
+</md-card-actions>
+</md-card>
+{% endfor %}
+</div>
+<div style="padding-left:18px;padding-right:18px;padding-top:50px;padding-bottom:30px">
+
+
+<!-- <hr style="margin-bottom:20px;color:lightgrey" hide-xs> -->
+
+<div id="191317459">
+    <script type="text/javascript">
+        try {
+            window._mNHandle.queue.push(function (){
+                window._mNDetails.loadTag("191317459", "600x250", "191317459");
+            });
+        }
+        catch (error) {}
+    </script>
+</div>
+
+
+<md-toolbar style="border-radius:4px;background-color:#7d669e;margin-top:10px;height:35px!important" layout="row" layout-align="center center"><h5>Latest Stories from GFO</h5></md-toolbar>
+</div>
+<div>
+<md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="2" md-cols-gt-md="2" md-row-height-gt-md="1:.9" md-row-height-md="1:.92" md-gutter-md="8px" md-gutter-gt-md="20" md-row-height-xs="1:1" md-gutter-xs="20" md-row-height-sm="1:1.13" md-gutter-sm="15">
+{% for obj in latest %}
+<md-grid-tile>
+<md-card layout-fill layout-padding>
+{% if obj.image %}
+<a href="{{ obj.get_absolute_url }}">
+<img ng-src="{{ obj.image_thumbnail_1.url }}" class="latestImg" class=" md-card-image" alt="{{obj.image_description}}"></a>
+{% endif %}
+<div layout="column">
+<md-card-title-text layout-wrap>
+<a class="title_hover" style="font-weight:bold;color:#67686b" href='{{ obj.get_absolute_url }}'>{{ obj.title | truncatechars:65 }} | {{obj.category.name}}</a>
+</md-card-title-text>
+<div layout="row" layout-align="space-between center" style="padding-top:8px;padding-right:0;padding-bottom:8px;padding-left:0;font-size:15px;color:#828284">
+<div>
+<span>By-{{obj.user.user.first_name}} {{obj.user.user.last_name}}</span></div>
+<div>
+<span> &#128344; {{ obj.publish }}</span></div>
+</div>
+</div>
+</md-card>
+</md-grid-tile>
+{% endfor %}
+</md-grid-list>
+</div>
+</div>
+<div class="vl" hide-sm hide-xs></div>
+<div class="1-2" flex-gt-sm="30">
+<div style="padding-left:8px;padding-right:8px">
+<md-toolbar style="border-radius:6px;background-color:#7d669e;margin-top:10px;height:15px!important" layout="row" layout-align="center center"><h5>Most Popular Right Now</h5></md-toolbar>
+</div>
+
+
+<md-card>
+<div id="325262019">
+
+    <script type="text/javascript">
+
+        try {
+
+            window._mNHandle.queue.push(function (){
+
+                window._mNDetails.loadTag("325262019", "336x280", "325262019");
+
+            });
+
+        }
+
+        catch (error) {}
+
+    </script>
+
+</div>
+
+</md-card>
+
+
+{% for obj in popular%}
+<md-card>
+<div layout="row">
+{% if obj.image %}
+<div layout="row" layout-align="start center">
+<a href="{{ obj.get_absolute_url }}">
+<img layout-padding ng-src="{{ obj.image_thumbnail_2.url }}" style="height:90px;width:110px" alt="{{obj.image_description}}"></a></div>
+{% endif %}
+<div layout="column" flex>
+<div layout-align="start center">
+<md-card-title>
+<md-card-title-text>
+<a class="title_hover" style="font-weight:bold;font-size:13px;color:#67686b" href='{{ obj.get_absolute_url }}' font-family: "Titillium Web",Helvetica,Arial,sans-serif>{{ obj.title | truncatechars:85 }}</a>
+</md-card-title-text>
+</md-card-title>
+</div>
+<div layout="row" layout-align="end center">
+<md-card-actions>
+<span style="font-size:12px;color:#67686b">&#128344; {{ obj.publish }}</span></md-card-actions>
+</div>
+</div>
+</div>
+</md-card>
+{% endfor %}
+
+</div>
+</div>
+<div class="pagination" layout="row" layout-align="center center" style="margin-top:30px">
+<span class="step-links">
+{% if latest.has_previous %}
+<a href="?page={{ latest.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><md-icon style="width:40px;height:40px" md-svg-src="/media/None/preview.svg"></md-icon></a>
+{% endif %}
+<span class="current" style="font-size:20px;font-weight:600">
+Page {{ latest.number }} of {{ latest.paginator.num_pages }}
+</span>
+{% if latest.has_next %}
+<a href="?page={{ latest.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><md-icon style="width:40px;height:40px" md-svg-src="/media/None/next.svg"></md-icon></a>
+{% endif %}
+</span>
+</div>
+{% endif %}
+{% endblock content %}

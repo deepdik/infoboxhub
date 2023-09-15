@@ -1,0 +1,528 @@
+{% extends "base.html" %}
+{% block head_title %}
+{{title}} | GFO {{block.super}}
+{% endblock head_title %}
+{% block head_description %}
+{{description}}{{block.super}}
+{% endblock head_description %}
+{% block head_keywords %}
+{{keywords}}, GFO, globalforumonline {{block.super}}
+{% endblock head_keywords %}
+{% block meta_title %}
+{{title}} | GFO {{block.super}}
+{% endblock meta_title %}
+{% block head_auther %}
+{{author}}{{block.super}}
+{% endblock head_auther %}
+{% block og_title %}
+{{title}} | GFO {{block.super}}
+{% endblock og_title %}
+{% block og_description %}
+{{description}}{{block.super}}
+{% endblock og_description %}
+{% block fb_img_url %}
+https://globalforumonline.com/media/{{img}}{{block.super}}
+{% endblock fb_img_url %}
+{% block tw_title %}
+{{title}} | GFO {{block.super}}
+{% endblock tw_title %}
+{% block tw_description %}
+{{description}}{{block.super}}
+{% endblock tw_description %}
+{% block tw_img_url %}
+http://globalforumonline.com/media/{{img}}{{block.super}}
+{% endblock tw_img_url %}
+
+
+{% block content %}
+<md-toolbar class="md-hue-2 show-sm show-xs hide-gt-sm md-whiteframe-5dp" style="background-color:#7d669e">
+<div class="md-toolbar-tools" layout='row' ng-show="!show">
+<div>
+<md-icon ng-click="toggleLeft()" class="toolbarSvg" md-svg-src="/media/None/menu.svg"></md-icon>
+<a href="/">
+<span style="font-size:24px;color:#fff;margin-left:9px;font-family:fontawesome;margin-left:10">GFO</span>
+<md-icon md-svg-src="/media/None/gfo.svg" style="margin-top:0;margin-right:0;margin-bottom:4px;margin-left:5px"></md-icon></a>
+</div>
+<div style="position:absolute;right:0;margin-right:5px">
+<md-icon class="toolbarSvg" md-svg-src="/media/None/search.svg" ng-click="show=!show"></md-icon>
+</div>
+</div>
+<div class="md-toolbar-tools" ng-show="show">
+<md-button class="md-icon-button" ng-click="show=!show" aria-label="Menu">
+<md-icon class="md-default-theme" class="toolbarSvg" md-svg-src="/media/None/back.svg"></md-icon>
+</md-button>
+<form flex method='GET' action="/" style="padding:0;margin:0">
+<input class="searchInput" type="text" placeholder="Search For New Stories" value="{{request.GET.q}}" name="q" />
+<md-button ng-click="doSearch(search)" class="md-icon-button" aria-label="searchBtn" type="submit">
+<md-icon class="toolbarSvg" md-svg-src="/media/None/send.svg"></md-icon>
+</md-button>
+</form>
+</div>
+</md-toolbar>
+<md-toolbar class="hide-sm hide-xs md-whiteframe-6dp" style="background-color:#7d669e;font-weight:600">
+<div class="md-toolbar-tools" layout="row" ng-show="true">
+<a href="/"><div layout="row" layout-align="start center">
+<span style="font-size:24px;color:#fff;font-family:fontawesome;margin-left:10">GFO</span>
+<md-icon md-svg-src="/media/None/gfo.svg" style="margin-left:5px"></md-icon>
+</div></a>
+<div flex="5"></div>
+<div layout="row" hide-xs hide-sm style="padding-left:10px" ng-show="!foo">
+<a href="/economy/" class="category">Economy</a>
+<a href="/technology/" class="category">Technology</a>
+<a href="/entertainment/" class="category">Entertainment</a>
+<a href="/business/" class="category">Business</a>
+<a href="/lifestyle/" class="category">Lifestyle</a>
+<a href="/startups/" class="category">Startups</a>
+<a href="/special/" class="category">Today's Special</a>
+</div>
+<div style="position:absolute;right:0;margin-right:15px" ng-show="!foo" ng-click="foo=!foo">
+<md-icon style="" ng-click="" class="toolbarSvg" md-svg-src="/media/None/search.svg"></md-icon>
+</div>
+<div class="md-toolbar-tools" ng-show="foo">
+<form flex method='GET' action="/" style="padding:0;margin:0">
+<div style="background-color:white;width:75%;border-radius:5px">
+<input class="searchInput" type="text" placeholder="Search For New Stories" value="{{request.GET.q}}" name="q" />
+<md-icon style="position:absolute;right:24%;margin-top:5px" ng-click="foo=!foo" class="toolbarSvg" md-svg-src="/media/None/close.svg"></md-icon>
+<md-button style="position:absolute;right:13%" class="md-raised" value="SEARCH" type="submit"><md-icon style="height:28px;width:28px" md-svg-src="/media/None/desksearch.svg"></md-icon></md-button>
+</div>
+</form>
+</div>
+</div>
+</md-toolbar>
+
+<div layout="row" layout-align="center none" id="224659742">
+
+    <script type="text/javascript">
+
+        try {
+
+            window._mNHandle.queue.push(function (){
+
+                window._mNDetails.loadTag("224659742", "728x90", "224659742");
+
+            });
+
+        }
+
+        catch (error) {}
+
+    </script>
+
+</div>
+
+   
+
+{% if request.GET.q %}
+{% if count == 0 %}
+<div layout="row" layout-xs="column" layout-sm="column" style="margin-top:15px">
+<div flex-gt-sm="70">
+<md-card>
+<md-card-title>
+<md-card-title-text layout="column" layout-align="center center">
+<h2 style="color:#67686b">Sorry we couldn't find any matches for '{{request.GET.q}}'</h2>
+<h3 style="color:#67686b">Maybe your search was too specific, please try searching with another term</h3>
+<md-icon layout-padding style="height:250px;width:250px" md-svg-src="/media/None/notfound.svg"></md-icon>
+</md-card-title-text>
+</md-card-title>
+</md-card>
+</div>
+<div>
+<div class="1-2" class="popular">
+<div style="padding-left:8px;padding-right:8px">
+<md-toolbar style="border-radius:6px;font-weight:bold;font-size:15px;background-color:#7d669e;margin-top:10px;height:15px!important" layout="row" layout-align="center center">Most Popular Right Now</md-t+oolbar>
+</div>
+
+<md-card>
+<div id="325262019">
+
+    <script type="text/javascript">
+
+        try {
+
+            window._mNHandle.queue.push(function (){
+
+                window._mNDetails.loadTag("325262019", "336x280", "325262019");
+
+            });
+
+        }
+
+        catch (error) {}
+
+    </script>
+
+</div>
+
+</md-card>
+
+
+
+{% for obj in popular%}
+<md-card>
+<div layout="row">
+{% if obj.image %}
+<div layout="row" layout-align="start center">
+<img layout-padding ng-src="{{ obj.image_thumbnail_2.url}}" style="height:90px;width:110px" alt="Washed Out"></div>
+{% endif %}
+<div layout="column" flex>
+<div layout-align="start center">
+<md-card-title>
+<md-card-title-text>
+<a class="title_hover" style="font-weight:bold;font-size:13px;color:#67686b" href='{{ obj.get_absolute_url }}' font-family: "Titillium Web",Helvetica,Arial,sans-serif>{{ obj.title | truncatechars:85 }}</a>
+</md-card-title-text>
+</md-card-title>
+</div>
+<div layout="row" layout-align="end center">
+<md-card-actions>
+<span style="font-size:12px;color:#67686b;color:#67686b">&#128344; {{ obj.publish }}</span></md-card-actions>
+</div>
+</div>
+</div>
+</md-card>
+{% endfor %}
+</div>
+</div>
+</div>
+{% else %}
+<div layout="row" layout-xs="column" layout-sm="column" style="margin-top:15px">
+<div class="pblm" layout="row">
+<md-card>
+<md-content>
+<md-card-title>
+<md-card-title-text layout="row">
+<span class="md-headline">Search Result For <strong>'{{request.GET.q }}'</strong> ({{count}})</span>
+</md-card-title-text>
+</md-card-title>
+</md-content>
+{% for obj in latest%}
+<md-content>
+{% if obj.image %}
+<md-divider ng-if="!$last"></md-divider>
+<div layout="row">
+<div layout="row" layout-align="start center">
+<md-card-title-media>
+<div class="md-media-lg card-media">
+<img class="searchImg" layout-padding ng-src="{{ obj.image_thumbnail_1.url}}" alt="">
+</div>
+</md-card-title-media>
+</div>
+{% endif %}
+<div>
+<md-list>
+<md-list-item class="md-3-line">
+<div class="md-list-item-text">
+<md-card-title-text layout="column">
+<a class="title_hover" style="font-weight:bold;font-size:21px;margin:.5em 0;color:#67686b;text-decoration:underline" href='/detail/{{ obj.slug}}/'>{{ obj.title | truncatechars:85 }} </a>
+<p>{{ obj.description | truncatechars:140}}</p>
+</md-card-title-text>
+<div layout="row">
+<span style="font-size:15px;padding-top:5px;padding-right:5px;padding-bottom:5px;padding-left:0;color:#67686b">&#128344; {{ obj.publish }}</span></div>
+</div>
+</md-list-item>
+</md-list></div>
+</div>
+</md-content>
+{%endfor%}
+{%endif%}
+</md-card>
+</div>
+{% if count != 0%}
+<div class="1-2" class="popular">
+<div style="padding-left:8px;padding-right:8px">
+<md-toolbar style="border-radius:6px;font-weight:bold;font-size:15px;background-color:#7d669e;margin-top:10px;height:15px!important" layout="row" layout-align="center center">Most Popular Right Now</md-toolbar>
+</div>
+
+<md-card>
+<div id="325262019">
+
+    <script type="text/javascript">
+
+        try {
+
+            window._mNHandle.queue.push(function (){
+
+                window._mNDetails.loadTag("325262019", "336x280", "325262019");
+
+            });
+
+        }
+
+        catch (error) {}
+
+    </script>
+
+</div>
+
+</md-card>
+
+
+
+
+{% for obj in popular%}
+<md-card>
+<div layout="row">
+{% if obj.image %}
+<div layout="row" layout-align="start center">
+<img layout-padding ng-src="{{ obj.image_thumbnail_2.url}}" style="height:90px;width:110px" alt="Washed Out"></div>
+{% endif %}
+<div layout="column" flex>
+<div layout-align="start center">
+<md-card-title>
+<md-card-title-text>
+<a class="title_hover" style="font-weight:bold;font-size:13px;color:#67686b" href='{{ obj.get_absolute_url }}' font-family: "Titillium Web",Helvetica,Arial,sans-serif>{{ obj.title | truncatechars:85 }}</a>
+</md-card-title-text>
+</md-card-title>
+</div>
+<div layout="row" layout-align="end center">
+<md-card-actions>
+<span style="font-size:12px;color:#67686b">&#128344; {{ obj.publish }}</span></md-card-actions>
+</div>
+</div>
+</div>
+</md-card>
+{% endfor %}
+</div>
+{% endif%}
+</div>
+<div class="pagination" layout="row" layout-align="center center" style="margin-top:30px">
+<span class="step-links">
+{% if latest.has_previous %}
+<a href="?page={{ latest.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><md-icon style="width:40px;height:40px" md-svg-src="/media/None/preview.svg"></md-icon></a>
+{% endif %}
+<span class="current" style="font-size:20px;font-weight:600">
+Page {{ latest.number }} of {{ latest.paginator.num_pages }}
+</span>
+{% if latest.has_next %}
+<a href="?page={{ latest.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><md-icon style="width:40px;height:40px" md-svg-src="/media/None/next.svg"></md-icon></a>
+{% endif %}
+</span>
+</div>
+{% else %}
+<div layout="column">
+<div layout="row" layout-xs="column" style="padding-top:15px" layout-sm="column">
+<div class="pblm">
+<div class="1-1-1">
+<md-card>
+<md-card-title>
+<md-card-title-text>
+<div layout="row" layout-align="space-between center">
+<div>
+<span><a href="/" style="color:#7D669E;font-weight:bold">Home</a> / <a href="/{{post_detail.category.name}}/" style="color:#7D669E;font-weight:bold">{{post_detail.category.name}}</a></span> / <span style="font-weight:bold;color:#67686b85">{{post_detail.title}}</span>
+</div>
+<div>
+<span style="font-weight:bold;color:#cccdce;font-size:14px">Viewed</span>
+<md-icon md-svg-src="/media/None/views.svg"></md-icon>
+<span style="font-weight:bold;color:#cccdce;font-size:14px">{{post_detail.viewed}}</span>
+</div>
+</div>
+<h1 class="title_hover">{{ post_detail.title }} </h1>
+</md-card-title-text>
+</md-card-title>
+<md-divider></md-divider>
+<div layout="row" layout-xs="column" layout-padding layout-align="end start" layout-gt-sm="none center">
+<div layout='row' layout-margin flex-gt-xs layout-align="none center">
+<div style="border-left:2px solid lightgrey;height:80px"></div>
+<span style="color:#67686b;font-family:Georgia,serif">By</span>
+{% if post_detail.user.image_2 %}
+<img style="height:80px;width:80px;border-radius:50%" ng-src="{{post_detail.user.image_2.url}}" />
+{% else %}
+<img style="height:80px;width:80px;border-radius:50%" ng-src="{{post_detail.user.image}}" />
+{% endif%}
+<div layout="column">
+<span style="color:#7d669e;font-size:23px;font-family:Georgia,serif">{{post_detail.user.user.first_name}} {{post_detail.user.user.last_name}}</span>
+<span style="color:#67686b;font-family:Georgia,serif">Published:{{post_detail.publish}}</span>
+</div>
+</div>
+<div layout="column" layout-align-gt-xs="end end">
+<div>
+<a hide-gt-sm href="whatsapp://send?text=https://globalforumonline.com{{ request.path }}" data-action="share/whatsapp/share"><md-icon style="height:34px;width:38px;margin-bottom:8px" md-svg-src="/media/None/whatsapp.svg"></a>
+<a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}" target="_blank" data-share-type="Facebook" class="share_this fa fa-facebook"></a>
+<a href="https://twitter.com/intent/tweet?original_referer={{request.build_absolute_uri}}&amp;text={{share_title}}&amp;url={{request.build_absolute_uri}}" target="_blank" class="share_this fa fa-twitter"></a>
+<a href='https://plus.google.com/share?url={{request.build_absolute_uri}}' class="fa fa-google"></a>
+<a href="https://www.linkedin.com/shareArticle?mini=true&url={{request.build_absolute_uri}}&title={{share_title}}&summary={{ share_content }}&source={{ request.build_absolute_uri }}" target="_blank" class="fa fa-linkedin"></a>
+<a href="https://pinterest.com/pin/create/link/?url={{request.build_absolute_uri}}&amp;media=https://globalforumonline.com{{post_detail.image.url}}&amp;description={{post_detail.}}" target="_blank" class="fa fa-pinterest">
+</a>
+</div>
+<div>
+<a href="http://www.reddit.com/submit?url={{request.build_absolute_uri}}&title={{post_detail.title}}"><md-icon style="height:33px;width:38px;margin-bottom:8px" md-svg-src="/media/None/reddit.svg"></md-icon></a>
+<a href="https://www.blogger.com/blog-this.g?u={{request.build_absolute_uri}}&n={{share_title}}&t={{post_detail.description}}"><md-icon style="height:34px;width:40px;margin-bottom:8px" md-svg-src="/media/None/blogger.svg"></md-icon>
+</a>
+<a href="http://tumblr.com/widgets/share/tool?canonicalUrl={{request.build_absolute_uri}}"><md-icon style="height:32px;width:37px;margin-bottom:8px" md-svg-src="/media/None/tumblr.svg"></md-icon>
+</a>
+<a data-flip-widget="shareflip" href="https://flipboard.com"><md-icon style="height:33px;width:30px!important;margin-bottom:8px" md-svg-src="/media/None/flipboard.svg"></a><script src="https://cdn.flipboard.com/web/buttons/js/flbuttons.min.js" type="text/javascript"></script>
+<a href="http://digg.com/submit?url={{request.build_absolute_uri}}"><md-icon style="height:32px;width:37px;margin-bottom:8px" md-svg-src="/media/None/digg.svg"></md-icon></a>
+<a href="http://www.livejournal.com/update.bml?subject={{post_detail.title}}&event={{request.build_absolute_uri}}"><md-icon style="height:33px;width:38px;margin-bottom:8px" md-svg-src="/media/None/livejournal.svg"></md-icon></a>
+<a href="https://news.ycombinator.com/submitlink?u={{request.build_absolute_uri}}&t={{post_detail.title}}"><md-icon style="height:39px;width:43px;margin-bottom:8px" md-svg-src="/media/None/hackernews.svg"></md-icon></a>
+</div>
+</div>
+</div>
+<md-divider></md-divider>
+{% if post_detail.image %}
+<img ng-src="{{ post_detail.image.url }}" class="md-card-image" alt="{{post_detail.image_description}}">
+{% endif %}
+<md-card-actions layout="row" layout-align="start center">
+<h2></h2>
+<md-card-actions>
+<md-card-content style="padding:5px!important" layout="column" layout-align="center center">
+
+
+
+<div id="191317459" layout-fill>
+    <script type="text/javascript">
+        try {
+            window._mNHandle.queue.push(function (){
+                window._mNDetails.loadTag("191317459", "600x250", "191317459");
+            });
+        }
+        catch (error) {}
+    </script>
+</div>
+
+
+
+<p style="font-size:18.5px;font-weight:600">{{post_detail.description}}</p>
+{% autoescape off %}
+<div class="content-markdown" layout-wrap>{{post_detail.content| safe }}</div>
+{% if post_detail.video %}
+<iframe width="700" height="400" src="{{post_detail.video.url}}">
+</iframe>
+{% endif %}
+{% endautoescape %}
+
+
+
+<div>
+<a hide-gt-sm href="whatsapp://send?text=https://globalforumonline.com{{ request.path }}" data-action="share/whatsapp/share"><md-icon style="height:34px;width:38px;margin-bottom:8px" md-svg-src="/media/None/whatsapp.svg"></a>
+<a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}" target="_blank" data-share-type="Facebook" class="share_this fa fa-facebook"></a>
+<a href="https://twitter.com/intent/tweet?original_referer={{request.build_absolute_uri}}&amp;text={{share_title}}&amp;url={{request.build_absolute_uri}}" target="_blank" class="share_this fa fa-twitter"></a>
+<a href='https://plus.google.com/share?url={{request.build_absolute_uri}}' class="fa fa-google"></a>
+<a href="https://www.linkedin.com/shareArticle?mini=true&url={{request.build_absolute_uri}}&title={{share_title}}&summary={{ share_content }}&source={{ request.build_absolute_uri }}" target="_blank" class="fa fa-linkedin"></a>
+<a href="https://pinterest.com/pin/create/link/?url={{request.build_absolute_uri}}&amp;media=https://globalforumonline.com{{post_detail.image.url}}&amp;description={{post_detail.}}" target="_blank" class="fa fa-pinterest">
+</a>
+<a href="http://www.reddit.com/submit?url={{request.build_absolute_uri}}&title={{post_detail.title}}"><md-icon style="height:33px;width:38px;margin-bottom:8px" md-svg-src="/media/None/reddit.svg"></md-icon></a>
+<a href="https://www.blogger.com/blog-this.g?u={{request.build_absolute_uri}}&n={{share_title}}&t={{post_detail.description}}"><md-icon style="height:34px;width:40px;margin-bottom:8px" md-svg-src="/media/None/blogger.svg"></md-icon>
+</a>
+<a href="http://tumblr.com/widgets/share/tool?canonicalUrl={{request.build_absolute_uri}}"><md-icon style="height:33px;width:38px;margin-bottom:8px" md-svg-src="/media/None/tumblr.svg"></md-icon>
+</a>
+<a data-flip-widget="shareflip" href="https://flipboard.com"><md-icon style="height:33px;width:30px!important;margin-bottom:8px" md-svg-src="/media/None/flipboard.svg"></a><script src="https://cdn.flipboard.com/web/buttons/js/flbuttons.min.js" type="text/javascript"></script>
+<a href="http://digg.com/submit?url={{request.build_absolute_uri}}"><md-icon style="height:32px;width:37px;margin-bottom:8px" md-svg-src="/media/None/digg.svg"></md-icon></a>
+<a href="http://www.livejournal.com/update.bml?subject={{post_detail.title}}&event={{request.build_absolute_uri}}"><md-icon style="height:34px;width:40px;margin-bottom:8px" md-svg-src="/media/None/livejournal.svg"></md-icon></a>
+<a href="https://news.ycombinator.com/submitlink?u={{request.build_absolute_uri}}&t={{post_detail.title}}"><md-icon style="height:40px;width:44px;margin-bottom:8px" md-svg-src="/media/None/hackernews.svg"></md-icon></a>
+</div>
+</md-card-content>
+<div class="fb-comments" data-href="http://globalforumonline.com/" data-width="100%" data-numposts="8"></div>
+</md-card>
+<div style="padding-left:18px;padding-right:18px;padding-top:30px;padding-bottom:30px">
+<hr style="margin-bottom:20px;color:lightgrey" hide-xs>
+
+<md-toolbar style="border-radius:4px;background-color:#7d669e;font-weight:bold;font-size:15px;margin-top:10px;height:35px!important"" layout="row" layout-align="center center">Latest Stories from {{post_detail.category.name}}</md-toolbar>
+</div>
+<div>
+<md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="2" md-cols-gt-md="2" md-row-height-gt-md="1:.9" md-row-height-md="1:.92" md-gutter-md="8px" md-gutter-gt-md="20" md-row-height-xs="1:1" md-gutter-xs="20" md-row-height-sm="1:1.13" md-gutter-sm="15">
+
+
+{% for obj in latest %}
+<md-grid-tile>
+<md-card layout-fill layout-padding>
+{% if obj.image %}
+<a href="{{ obj.get_absolute_url }}">
+<img ng-src="{{ obj.image_thumbnail_1.url }}" class="latestImg" class=" md-card-image" alt="{{obj.image_description}}"></a>
+{% endif %}
+<div layout="column">
+<md-card-title-text>
+<a class="title_hover" style="font-weight:bold;color:#67686b" href='{{ obj.get_absolute_url }}'>{{ obj.title | truncatechars:80 }} | {{obj.category.name}}</a>
+</md-card-title-text>
+<div layout="row" layout-align="space-between center" style="font-size:15px;padding-top:8px;padding-right:0;padding-bottom:5px;padding-left:0;ccolor:#828284">
+<span>By-{{post_detail.user.user.first_name}} {{post_detail.user.user.last_name}}</span>
+<span>&#128344; {{ obj.publish }}</span></div>
+</div>
+</md-card>
+</md-grid-tile>
+{% endfor %}
+
+
+</md-grid-list>
+</div>
+</div>
+</div>
+<div class="1-2" flex-gt-sm="30">
+<div style="padding-left:8px;padding-right:8px">
+<md-toolbar style="border-radius:6px;font-weight:bold;font-size:15px;background-color:#7d669e;margin-top:10px;height:15px!important"" layout="row" layout-align="center center">Most Popular Right Now</md-toolbar>
+</div>
+
+
+<md-card>
+<div id="325262019">
+
+    <script type="text/javascript">
+
+        try {
+
+            window._mNHandle.queue.push(function (){
+
+                window._mNDetails.loadTag("325262019", "336x280", "325262019");
+
+            });
+
+        }
+
+        catch (error) {}
+
+    </script>
+
+</div>
+
+</md-card>
+
+
+
+{% for obj in popular%}
+<md-card>
+<div layout="row">
+{% if obj.image %}
+<div layout="row" layout-align="start center">
+<a href="{{ obj.get_absolute_url }}">
+<img layout-padding ng-src="{{ obj.image_thumbnail_2.url }}" style="height:90px;width:110px" alt="{{obj.image_description}}"></a></div>
+{% endif %}
+<div layout="column" flex>
+<div layout-align="start center">
+<md-card-title>
+<md-card-title-text>
+<a class="title_hover" style="font-weight:600;font-size:13px;color:#67686b" href='{{ obj.get_absolute_url }}' font-family: "Titillium Web",Helvetica,Arial,sans-serif>{{ obj.title | truncatechars:85 }}</a>
+</md-card-title-text>
+</md-card-title></div>
+<div layout="row" layout-align="end center">
+<md-card-actions>
+<span style="font-size:12px">&#128344; {{ obj.publish }}</span></md-card-actions>
+</div>
+</div>
+</div>
+</md-card>
+
+
+
+{% endfor %}
+
+</div>
+</div>
+</div>
+<div>
+</div>
+
+            
+
+<div class="pagination" layout="row" layout-align="center center" layout-padding>
+<span class="step-links">
+{% if latest.has_previous %}
+<a href="?page={{ latest.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><md-icon style="width:40px;height:40px" md-svg-src="/media/None/preview.svg"></md-icon></a>
+{% endif %}
+<span class="current" style="font-size:20px;font-weight:600">
+Page {{ latest.number }} of {{ latest.paginator.num_pages }}
+</span>
+{% if latest.has_next %}
+<a href="?page={{ latest.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><md-icon style="width:40px;height:40px" md-svg-src="/media/None/next.svg"></md-icon></a>
+{% endif %}
+</span>
+</div>
+{% endif %}
+{% endblock content %}

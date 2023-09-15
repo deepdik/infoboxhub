@@ -1,0 +1,10 @@
+from django.contrib.sitemaps import Sitemap
+
+from posts.models import Post
+
+class GfoSitemap(Sitemap):
+    changefreq = "weekly"
+    priority = 0.5
+
+    def posts(self):
+        return Post.objects.all()
