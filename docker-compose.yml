@@ -12,11 +12,14 @@ services:
 
     volumes:
       - .:/app
+      - ${PWD}/static_cdn:/app/static_cdn
+      - ${PWD}/media_cdn:/app/media_cdn 
     ports:
       - 8000:8000
     restart: "on-failure"
     environment:
       - ENV=DEV
 
-volumes:
-  staticfiles:
+# volumes:
+#   static_cdn:
+#   media_cdn: 
