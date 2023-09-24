@@ -32,7 +32,7 @@ def post_detail(request, slug=None):
     title = instance.title
     author = instance.user
     img = instance.image
-    keywords = instance.url_keyword
+    keywords = instance.keywords
     description = instance.description
     share_description = quote_plus(instance.description)
     share_title = quote_plus(instance.title)
@@ -95,9 +95,9 @@ def post_detail(request, slug=None):
 
 def category_view(request, name):
     today = timezone.now().date()
-    latest = Post.objects.active().order_by('-publish').filter(category__url_keyword=name)[:1]
+    latest = Post.objects.active().order_by('-publish').filter(category__url_keyword__iexact=name)[:1]
     popular = Post.objects.active().order_by('-viewed')[:5]
-    latest_post = Post.objects.active().order_by('-publish').filter(category__url_keyword=name)
+    latest_post = Post.objects.active().order_by('-publish').filter(category__url_keyword__iexact=name)
 
     queryset_list = Post.objects.active()
     query = request.GET.get("q")
@@ -123,7 +123,7 @@ def category_view(request, name):
         # If page is out of range (e.g. 9999), deliver last page of results.
         queryset = paginator.page(paginator.num_pages)
 
-    instance = get_object_or_404(Category, name=name)
+    instance = get_object_or_404(Category, url_keyword=name)
     description = instance.description
     keywords = instance.url_keyword
 
