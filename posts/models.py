@@ -61,7 +61,7 @@ class BloggerProfile(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=300)
-    keywords = models.CharField(max_length=500)
+    url_keyword = models.CharField(max_length=500) # url keyword
     order = models.IntegerField(default=1)
     svg_class = models.CharField(max_length=39, blank=True, null=True)
     is_active = models.BooleanField(default=True)

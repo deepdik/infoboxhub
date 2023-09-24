@@ -32,7 +32,7 @@ def post_detail(request, slug=None):
     title = instance.title
     author = instance.user
     img = instance.image
-    keywords = instance.keywords
+    keywords = instance.url_keyword
     description = instance.description
     share_description = quote_plus(instance.description)
     share_title = quote_plus(instance.title)
@@ -72,7 +72,7 @@ def post_detail(request, slug=None):
 
     categories = cache.get('categories')
     if categories is None:
-        categories = Category.objects.filter(is_active=True).values("name", "description", "svg_class").order_by('order')
+        categories = Category.objects.filter(is_active=True).values("name", "url_keyword", "svg_class").order_by('order')
         # Cache the queryset with a specified timeout (e.g., 300 seconds)
         cache.set('categories', categories, 3600)
 
@@ -95,9 +95,9 @@ def post_detail(request, slug=None):
 
 def category_view(request, name):
     today = timezone.now().date()
-    latest = Post.objects.active().order_by('-publish').filter(category__name=name)[:1]
+    latest = Post.objects.active().order_by('-publish').filter(category__url_keyword=name)[:1]
     popular = Post.objects.active().order_by('-viewed')[:5]
-    latest_post = Post.objects.active().order_by('-publish').filter(category__name=name)
+    latest_post = Post.objects.active().order_by('-publish').filter(category__url_keyword=name)
 
     queryset_list = Post.objects.active()
     query = request.GET.get("q")
@@ -125,11 +125,11 @@ def category_view(request, name):
 
     instance = get_object_or_404(Category, name=name)
     description = instance.description
-    keywords = instance.keywords
+    keywords = instance.url_keyword
 
     categories = cache.get('categories')
     if categories is None:
-        categories = Category.objects.filter(is_active=True).values("name", "description", "svg_class").order_by('order')
+        categories = Category.objects.filter(is_active=True).values("name", "url_keyword", "svg_class").order_by('order')
         # Cache the queryset with a specified timeout (e.g., 300 seconds)
         cache.set('categories', categories, 3600)
 
@@ -181,7 +181,7 @@ def home_page(request):
 
     categories = cache.get('categories')
     if categories is None:
-        categories = Category.objects.filter(is_active=True).values("name", "description", "svg_class").order_by('order')
+        categories = Category.objects.filter(is_active=True).values("name", "url_keyword", "svg_class").order_by('order')
         # Cache the queryset with a specified timeout (e.g., 300 seconds)
         cache.set('categories', categories, 3600)
 
@@ -229,7 +229,7 @@ def footer_view(request, footer=None):
 
     categories = cache.get('categories')
     if categories is None:
-        categories = Category.objects.filter(is_active=True).values("name", "description", "svg_class").order_by('order')
+        categories = Category.objects.filter(is_active=True).values("name", "url_keyword", "svg_class").order_by('order')
         # Cache the queryset with a specified timeout (e.g., 300 seconds)
         cache.set('categories', categories, 3600)
 

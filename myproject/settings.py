@@ -26,7 +26,7 @@ SECRET_KEY = '#lvs7x=@8pr#q_co80_&lfv2ls)v^ck@pex@1gjgj8!rxy51-y'
 
 DEBUG = True
 SITE_ID = 1
-ALLOWED_HOSTS = ['www.globalforumonline.com', 'globalforumonline.com']
+ALLOWED_HOSTS = ['infoboxhub.com']
 
 
 # Application definition

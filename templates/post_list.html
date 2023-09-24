@@ -47,7 +47,7 @@
 <div flex="5"></div>
 <div layout="row" hide-xs hide-sm style="padding-left:10px" ng-show="!foo">
     {% for cat in categories %}
-    <a href="/category/{{cat.name}}" class="category">{{cat.description}}</a>
+    <a href="/category/{{cat.url_keyword}}" class="category">{{cat.name}}</a>
     {% endfor %}
 </div>
 <div style="position:absolute;right:0;margin-right:15px" ng-show="!foo" ng-click="foo=!foo">

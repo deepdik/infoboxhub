@@ -89,12 +89,12 @@
             {% for cat in categories %}
            <md-list-item>
                  <md-item flex>
-                <a ng-click="toggleLeft()" ng-href="/category/{{cat.name}}">
+                <a ng-click="toggleLeft()" ng-href="/category/{{cat.url_keyword}}">
                     <md-item-content md-ink-ripple="#919191" layout="row" layout-align="start center">
                         <div class="{{cat.svg_class|default:'fa fa-hand-o-right'}}" style="color:#7d669ec4 ;">
                             
                         </div>
-                        <div class="inset">{{cat.description}}
+                        <div class="inset">{{cat.name}}
                         </div>
                     </md-item-content>
                 </a>
