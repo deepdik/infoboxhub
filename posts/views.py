@@ -72,7 +72,7 @@ def post_detail(request, slug=None):
 
     categories = cache.get('categories')
     if categories is None:
-        categories = Category.objects.all().values("name", "description", "svg_class")
+        categories = Category.objects.filter(is_active=True).values("name", "description", "svg_class").order_by('order')
         # Cache the queryset with a specified timeout (e.g., 300 seconds)
         cache.set('categories', categories, 3600)
 
@@ -129,7 +129,7 @@ def category_view(request, name):
 
     categories = cache.get('categories')
     if categories is None:
-        categories = Category.objects.all().values("name", "description", "svg_class")
+        categories = Category.objects.filter(is_active=True).values("name", "description", "svg_class").order_by('order')
         # Cache the queryset with a specified timeout (e.g., 300 seconds)
         cache.set('categories', categories, 3600)
 
@@ -181,7 +181,7 @@ def home_page(request):
 
     categories = cache.get('categories')
     if categories is None:
-        categories = Category.objects.all().values("name", "description", "svg_class")
+        categories = Category.objects.filter(is_active=True).values("name", "description", "svg_class").order_by('order')
         # Cache the queryset with a specified timeout (e.g., 300 seconds)
         cache.set('categories', categories, 3600)
 
@@ -229,7 +229,7 @@ def footer_view(request, footer=None):
 
     categories = cache.get('categories')
     if categories is None:
-        categories = Category.objects.all().values("name", "description", "svg_class")
+        categories = Category.objects.filter(is_active=True).values("name", "description", "svg_class").order_by('order')
         # Cache the queryset with a specified timeout (e.g., 300 seconds)
         cache.set('categories', categories, 3600)
 

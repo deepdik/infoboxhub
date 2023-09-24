@@ -22,7 +22,7 @@ from django.contrib.auth.models import User
 class PostManager(models.Manager):
     def active(self, *args, **kwargs):
    
-        return super(PostManager, self).filter(draft=False).filter(publish__lte=timezone.now())
+        return super(PostManager, self).filter(draft=False, category__is_active=True).filter(publish__lte=timezone.now())
 
 
 def upload_location(instance, filename):
@@ -64,6 +64,7 @@ class Category(models.Model):
     keywords = models.CharField(max_length=500)
     order = models.IntegerField(default=1)
     svg_class = models.CharField(max_length=39, blank=True, null=True)
+    is_active = models.BooleanField(default=True)
     
     def __str__(self):
         return str(self.name)
