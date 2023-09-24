@@ -11,7 +11,7 @@ services:
     command: sh -c "python manage.py runserver 0.0.0.0:8000"
 
     volumes:
-      - .:/app
+      - ${PWD}:/app
       - ${PWD}/static_cdn:/app/static_cdn
       - ${PWD}/media_cdn:/app/media_cdn 
     ports:

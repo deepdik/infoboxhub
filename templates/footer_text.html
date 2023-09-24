@@ -11,7 +11,7 @@
 <md-icon ng-click="toggleLeft()" class="toolbarSvg" md-svg-src="/media/None/menu.svg"></md-icon>
 <a href="/">
 <span style="font-size:24px;color:#fff;margin-left:9px;font-family:fontawesome;margin-left:10">IBH</span>
-<md-icon md-svg-src="/media/None/gfo.svg" style="margin-top:0;margin-right:0;margin-bottom:4px;margin-left:5px"></md-icon></a>
+<md-icon md-svg-src="/media/None/ibh.svg" style="margin-top:0;margin-right:0;margin-bottom:4px;margin-left:5px"></md-icon></a>
 </div>
 <div style="position:absolute;right:0;margin-right:5px">
 <md-icon class="toolbarSvg" md-svg-src="/media/None/search.svg" ng-click="show=!show"></md-icon>
@@ -33,18 +33,16 @@
 <div class="md-toolbar-tools" layout="row" ng-show="true">
 <a href="/"><div layout="row" layout-align="start center">
 <span style="font-size:24px;color:#fff;font-family:fontawesome;margin-left:10">IBH</span>
-<md-icon md-svg-src="/media/None/gfo.svg" style="margin-left:5px"></md-icon>
+<md-icon md-svg-src="/media/None/ibh.svg" style="margin-left:5px"></md-icon>
 </div></a>
 <div flex="5"></div>
+
 <div layout="row" hide-xs hide-sm style="padding-left:10px" ng-show="!foo">
-<a href="/economy/" class="category">Economy</a>
-<a href="/technology/" class="category">Technology</a>
-<a href="/entertainment/" class="category">Entertainment</a>
-<a href="/business/" class="category">Business</a>
-<a href="/lifestyle/" class="category">Lifestyle</a>
-<a href="/startups/" class="category">Startups</a>
-<a href="/special/" class="category">Today's Special</a>
+    {% for cat in categories %}
+    <a href="/category/{{cat.name}}" class="category">{{cat.description}}</a>
+    {% endfor %}
 </div>
+
 <div style="position:absolute;right:0;margin-right:15px" ng-show="!foo" ng-click="foo=!foo">
 <md-icon style="" ng-click="" class="toolbarSvg" md-svg-src="/media/None/search.svg"></md-icon>
 </div>
@@ -187,7 +185,7 @@
 <div layout="row" layout-align="start center">
 <md-card-title-media>
 <div class="md-media-lg card-media">
-<a href="/detail/{{ obj.slug}}/">
+<a href="{{ obj.slug}}/">
 <img class="searchImg" layout-padding ng-src="{{ obj.image_thumbnail_2.url }}"></a>
 </div>
 </md-card-title-media>
@@ -198,7 +196,7 @@
 <md-list-item class="md-3-line">
 <div class="md-list-item-text">
 <md-card-title-text layout="column">
-<a class="title_hover" style="font-weight:bold;font-size:21px;margin:.5em 0;color:#67686b" href='/{{ obj.slug}}/detail/'>{{ obj.title | truncatechars:85 }} </a>
+<a class="title_hover" style="font-weight:bold;font-size:21px;margin:.5em 0;color:#67686b" href='/{{ obj.slug}}'>{{ obj.title | truncatechars:85 }} </a>
 <p>{{ obj.description | truncatechars:140}}</p>
 </md-card-title-text>
 <div layout="row">
@@ -247,7 +245,7 @@
 <div layout="row">
 {% if obj.image %}
 <div layout="row" layout-align="start center">
-<a href="/detail/{{ obj.slug}}/">
+<a href="{{ obj.slug}}/">
 <img layout-padding ng-src="{{ obj.image_thumbnail_2.url }}" style="height:90px;width:110px"></a></div>
 {% endif %}
 <div layout="column" flex>
@@ -392,14 +390,14 @@ Page {{ latest.number }} of {{ latest.paginator.num_pages }}
 <div layout="row">
 {% if obj.image %}
 <div layout="row" layout-align="start center">
-<a href="/detail/{{ obj.slug}}/">
+<a href="{{ obj.slug}}/">
 <img layout-padding ng-src="{{ obj.image_thumbnail_2.url}}" style="height:90px;width:110px"></a></div>
 {% endif %}
 <div layout="column" flex>
 <div layout-align="start center">
 <md-card-title>
 <md-card-title-text>
-<a class="title_hover" style="font-weight:bold;font-size:13px;color:#67686b" href='{{ obj.get_absolute_url }}' font-family: "Titillium Web",Helvetica,Arial,sans-serif>{{ obj.title | truncatechars:85 }}</a>
+<a class="title_hover" style="font-weight:bold;font-size:13px;color:#67686b" href='{{ obj.get_absolute_url }}' >{{ obj.title | truncatechars:85 }}</a>
 </md-card-title-text>
 </md-card-title></div>
 <div layout="row" layout-align="end center">

@@ -15,6 +15,9 @@ RUN apt-get install -y libgdal-dev
 RUN apt-get install -y cron
 RUN apt-get install -y vim nano
 
+# RUN apt-get install memcached
+# RUN systemctl start memcached
+
 
 COPY requirement.txt requirement.txt
 RUN pip3 install -r requirement.txt

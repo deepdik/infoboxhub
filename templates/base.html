@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 {% load markdown_deux_tags %}
-<html  lang="en" ng-app="GFO" ng-controller='GFOCtrl'>
+<html  lang="en" ng-app="IBH" ng-controller='IBHCtrl'>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="/media/None/gfo.png" type="image/png" sizes="16x16">
+<link rel="icon" href="/media/None/ibh.png" type="image/png" sizes="16x16">
 <meta name="theme-color" content="#7D669E">
 <meta name="apple-mobile-web-app-status-bar-style" content="#7D669E">
 <meta name="robots" content="noarchive">
@@ -79,106 +79,29 @@
 
     <md-toolbar  style="background-color:#7D669E; " >
         <div ng-href="\category" layout="column" class="md-toolbar-tools-bottom inset" layout-align="center center">
-            <div>  <span style="font-size: 24px; color: #fff; font-family:fontawesome; margin-left: 10;"><md-icon md-svg-src="/media/None/gfo.svg" style="margin-bottom:6px; margin-left:3px;"></md-icon></span>
+            <div>  <span style="font-size: 24px; color: #fff; font-family:fontawesome; margin-left: 10;"><md-icon md-svg-src="/media/None/ibh.svg" style="margin-bottom:6px; margin-left:3px;"></md-icon></span>
             </div>
-            <div style="font-size: 24px; color: #fff; font-family:fontawesome; margin-left: 10;">&nbspGFO</div>
+            <div style="font-size: 24px; color: #fff; font-family:fontawesome; margin-left: 10;">&nbspIBH</div>
             
         </div>
     </md-toolbar>
       <md-list style='font-color:#696969;'>
-
+            {% for cat in categories %}
            <md-list-item>
                  <md-item flex>
-                <a ng-click="toggleLeft()" ng-href="/economy/">
+                <a ng-click="toggleLeft()" ng-href="/category/{{cat.name}}">
                     <md-item-content md-ink-ripple="#919191" layout="row" layout-align="start center">
-                        <div class="fa fa-money" style="color:#7d669ec4 ;">
+                        <div class="{{cat.svg_class|default:'fa fa-hand-o-right'}}" style="color:#7d669ec4 ;">
                             
                         </div>
-                        <div class="inset">Economy
+                        <div class="inset">{{cat.description}}
                         </div>
                     </md-item-content>
                 </a>
             </md-item>
         </md-list-item>
-        <md-list-item>
-                 <md-item flex>
-                <a ng-click="toggleLeft()" ng-href="/technology/">
-                    <md-item-content md-ink-ripple="#919191" layout="row" layout-align="start center">
-                       <div class="fa fa-cog" style="color:#7d669ec4;">
-                           
-                        </div> 
-                        <div class="inset">Technology
-                        </div>
-                    </md-item-content>
-                </a>
-            </md-item>
-        </md-list-item>
-                <md-list-item>
-                 <md-item flex>
-                <a ng-click="toggleLeft()" ng-href="/entertainment/">
-                    <md-item-content md-ink-ripple="#919191" layout="row" layout-align="start center">
-                       <div class="fa fa-smile-o" style="color:#7d669ec4;">
-                            
-                        </div>
-                        <div class="inset">Entertainment
-                        </div>
-                    </md-item-content>
-                </a>
-            </md-item>
-        </md-list-item>
-                <md-list-item>
-                 <md-item flex>
-                <a ng-click="toggleLeft()" ng-href="/business/">
-                    <md-item-content md-ink-ripple="#919191" layout="row" layout-align="start center">
-                      <div class="fa fa-handshake-o" style="color:#7d669ec4;">
-                         
-                        </div>
-                        <div class="inset">Business
-                        </div>
-                    </md-item-content>
-                </a>
-            </md-item>
-        </md-list-item>
-                <md-list-item>
-                 <md-item flex>
-                <a ng-click="toggleLeft()" ng-href="/startups/">
-                    <md-item-content md-ink-ripple="#919191" layout="row" layout-align="start center">
-                       <div class="fa fa-hand-peace-o" style="color:#7d669ec4;">
-                            
-                        </div> 
-                        <div class="inset">Startups
-                        </div>
-                    </md-item-content>
-                </a>
-            </md-item>
-        </md-list-item>
-                <md-list-item>
-                 <md-item flex>
-                <a ng-click="toggleLeft()" ng-href="/lifestyle/">
-                    <md-item-content md-ink-ripple="#919191" layout="row" layout-align="start center">
-                       <div class="fa fa-heartbeat" style="color:#7d669ec4;">
-                            
-                        </div>
-                        <div class="inset">Lifestyle
-                        </div>
-                    </md-item-content>
-                </a>
-            </md-item>
-        </md-list-item>
-             
-               <md-list-item>
-                 <md-item flex>
-                <a ng-click="toggleLeft()" ng-href="/special/">
-                    <md-item-content md-ink-ripple="#919191" layout="row" layout-align="start center">
-                        <div class="fa fa-star" style="color:#7d669ec4;">
-                            
-                        </div>
-                        <div class="inset">Today's Special
-                        </div>
-                    </md-item-content>
-                </a>
-            </md-item>
-        </md-list-item>
+          {% endfor %}
+
            </md-list>
          </md-sidenav>
 
@@ -190,27 +113,6 @@
 
 <div class="hl" hide-sm hide-xs></div>
 
-<!-- <div id="425328384">
-
-    <script type="text/javascript">
-
-        try {
-
-            window._mNHandle.queue.push(function (){
-
-                window._mNDetails.loadTag("425328384", "970x250", "425328384");
-
-            });
-
-        }
-
-        catch (error) {}
-
-    </script>
-
-</div> -->
-
-
 <!-- FOOTER START-->
 
     <md-toolbar class="footer" style ="background-color: #7D669E; height: 280px; border-top-width:10px; border-top-color:#c481f4; margin-top: 50px"  layout="row" layout-xs="column">
@@ -220,27 +122,27 @@
     padding-bottom: 0px;
     padding-left: 20px;"layout-padding>
      <div >
-     <span style="font-size: 30px; color: #fff; font-family:fontawesome; ">InfoBoxHub<md-icon md-svg-src="/media/None/gfo.svg" style=" margin-top: 5px;
+     <span style="font-size: 30px; color: #fff; font-family:fontawesome; ">InfoBoxHub<md-icon md-svg-src="/media/None/ibh.svg" style=" margin-top: 5px;
     margin-right: 0px;
     margin-bottom: 0px;
     margin-left: 5px;"></md-icon></span></div>
      <div layout='row' class="footer_text" >
 
-      <div><a href="/GFO/about/" id="about" style="color:#fff !important;; margin-right: 5px; ">About Us</a></div>
-      <div><a href="/GFO/contact/" id="contact" style="color:#fff !important; margin-right: 5px; ">Contact Us</a></div>
-      <!-- <div><a href="/GFO/newsletter/" style="color:#fff !important; margin-right: 5px; ">Newsletters</a></div> -->
-      <div><a href="/GFO/Terms/" style="color:#fff !important; margin-right: 5px; ">Terms</a></div>
-      <div><a href="/GFO/privacy/" style="color:#fff !important; margin-right: 5px; ">Privacy Policy</a></div>            
+      <div><a href="/IBH/about/" id="about" style="color:#fff !important;; margin-right: 5px; ">About Us</a></div>
+      <div><a href="/IBH/contact/" id="contact" style="color:#fff !important; margin-right: 5px; ">Contact Us</a></div>
+      <!-- <div><a href="/IBH/newsletter/" style="color:#fff !important; margin-right: 5px; ">Newsletters</a></div> -->
+      <div><a href="/IBH/Terms/" style="color:#fff !important; margin-right: 5px; ">Terms</a></div>
+      <div><a href="/IBH/privacy/" style="color:#fff !important; margin-right: 5px; ">Privacy Policy</a></div>
      </div>
 
   </div>
   <div  layout='column' layout-align="start end" layout-align-xs="start start"  class="social" layout-padding>
     <div layout='row' layout-padding>
       <div>
-         <a href="https://www.facebook.com/globalforumonline/"><md-icon  class="toolbarSvg" md-svg-src="/media/None/fb.svg"></md-icon></a>
+         <a href="https://www.facebook.com/infoboxhub.facebook/"><md-icon  class="toolbarSvg" md-svg-src="/media/None/fb.svg"></md-icon></a>
       </div>
          <div>
-         <a href="https://twitter.com/Globalforumonl1"><md-icon  class="toolbarSvg" md-svg-src="/media/None/tw.svg"></md-icon></a>
+         <a href="https://twitter.com/info_box_hub"><md-icon  class="toolbarSvg" md-svg-src="/media/None/tw.svg"></md-icon></a>
       </div>
         <div> 
        <a href=""><md-icon  class="toolbarSvg" md-svg-src="/media/None/pnt.svg"></md-icon></a>
@@ -249,11 +151,9 @@
     <div class="footer_text">
       <span  >Copyright © 2019 InfoBoxHub. All Rights Reserved</span>
     </div>
-      <div>
-{#      <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FGlobal-forum-online-985900874921584%2F&width=133&layout=button_count&action=like&size=large&show_faces=true&share=true&height=46&appId=550373872014486" width="133" height="46" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>#}
-      </div>
-    
-    
+<!--      <div style="margin: auto">-->
+<!--      <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FGlobal-forum-online-985900874921584%2F&width=133&layout=button_count&action=like&size=large&show_faces=true&share=true&height=46&appId=550373872014486" width="133" height="46" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>-->
+<!--      </div>-->
   </div>
   
   </md-toolbar>
@@ -308,8 +208,8 @@ for (var i = 0, linksLength = links.length; i < linksLength; i++) {
 <script type="text/javascript">    
     
 angular
-  .module('GFO', ['ngMaterial'])
-  .controller('GFOCtrl', function ($scope, $timeout, $mdSidenav) {
+  .module('IBH', ['ngMaterial'])
+  .controller('IBHCtrl', function ($scope, $timeout, $mdSidenav) {
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');
 
