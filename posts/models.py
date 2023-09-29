@@ -134,15 +134,15 @@ class PostPictures(models.Model):
 class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     user = models.ForeignKey(BloggerProfile, default=1)
-    title = models.CharField(max_length=80)
-    description = models.CharField(max_length=300)
-    keywords = models.CharField(max_length=500)
-    slug = models.SlugField(unique=True, blank=True, max_length=70)
+    title = models.CharField(max_length=130, help_text="Max 130 char")
+    description = models.CharField(max_length=300, help_text="Max 300 char")
+    keywords = models.CharField(max_length=500, help_text="Max 500 char")
+    slug = models.SlugField(unique=True, blank=True, max_length=150)
     image = models.ImageField(upload_to=upload_location,
 	    blank=True,
             null=True,        
             width_field="width_field", 
-            height_field="height_field")
+            height_field="height_field", help_text="For best view it should be 700 x 400 px.Should not be below 450 x 300")
     image_thumbnail_1 = ImageSpecField(source='image',
             processors=[ResizeToFill(450, 300)],            
             options={'quality': 50})
