@@ -134,11 +134,13 @@ IBH | Technology, Economy, Lifestyle, Business, startups latest stories {{block.
 {% endif %}
 <div layout="column" flex>
 <div layout-align="start center">
+
 <md-card-title>
 <md-card-title-text>
 <a class="title_hover" style="font-weight:bold;font-size:13px;color:#67686b" href='{{ obj.get_absolute_url }}' >{{ obj.title | truncatechars:85 }}</a>
 </md-card-title-text>
 </md-card-title>
+
 </div>
 <div layout="row" layout-align="end center">
 <md-card-actions>
@@ -198,10 +200,12 @@ IBH | Technology, Economy, Lifestyle, Business, startups latest stories {{block.
 <md-list>
 <md-list-item class="md-3-line">
 <div class="md-list-item-text">
+
 <md-card-title-text layout="column">
 <a class="title_hover" style="font-weight:bold;font-size:21px;margin:.5em 0;color:#67686b;text-decoration:underline" href='{{ obj.slug}}/'>{{ obj.title | truncatechars:85 }} </a>
 <p>{{ obj.description | truncatechars:140}}</p>
 </md-card-title-text>
+
 <div layout="row">
 <span style="font-size:15px;padding-top:5px;padding-right:5px;padding-bottom:5px;padding-left:0;color:#67686b">&#128344; {{ obj.publish }}</span></div>
 </div>
@@ -255,10 +259,12 @@ IBH | Technology, Economy, Lifestyle, Business, startups latest stories {{block.
 <div layout="column" flex>
 <div layout-align="start center">
 <md-card-title>
+
 <md-card-title-text>
-<a class="title_hover" style="font-weight:bold;font-size:13px;color:#67686b" href='{{ obj.get_absolute_url }}' font-family: "Titillium Web",Helvetica,Arial,sans-serif>{{ obj.title | truncatechars:85 }}</a>
+<a class="title_hover" style="font-weight:bold;font-size:13px;color:#67686b" href='{{ obj.get_absolute_url }}' >{{ obj.title | truncatechars:85 }}</a>
 </md-card-title-text>
 </md-card-title>
+
 </div>
 <div layout="row" layout-align="end center">
 <md-card-actions>
@@ -307,11 +313,31 @@ Page {{ latest.number }} of {{ latest.paginator.num_pages }}
 <div class="1-1-1">
 {% for obj in main_latest %}
 <md-card>
+
+
     <md-card-title>
 <md-card-title-text>
 <a class="title_hover" style="font-weight:bold;font-size:1.8em;color:#67686b" href='{{obj.slug}}/'>{{ obj.title | truncatechars:85 }} </a>
 </md-card-title-text>
 </md-card-title>
+
+    <md-divider></md-divider>
+<div layout="row" layout-xs="column" layout-padding layout-align="end start" layout-gt-sm="none center">
+<div layout='row' layout-padding flex-gt-xs layout-align="none center">
+<div style="border-left:2px solid lightgrey;height:80px"></div>
+<span style="color:#67686b;font-family:Georgia,serif">By</span>
+{% if obj.user.image_2 %}
+<img style="height:80px;width:80px;border-radius:50%" ng-src="{{obj.user.image_2.url}}" />
+{% else %}
+<img style="height:80px;width:80px;border-radius:50%" ng-src="{{obj.user.image}}" />
+{% endif%}
+<div layout="column">
+<span style="color:#7d669e;font-size:23px;font-family:Titillium Web,Helvetica,Arial,sans-serif">{{obj.user.user.first_name| title }} {{obj.user.user.last_name }}</span>
+<span style="color:#67686b;font-family:Georgia,serif">Published:{{obj.publish}}</span>
+</div>
+</div>
+</div>
+
 {% if obj.image %}
 
         <img ng-src="{{ obj.image.url }}" class="md-card-image home_img" alt="{{obj.image_description}}" >
