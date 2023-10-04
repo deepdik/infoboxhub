@@ -134,8 +134,8 @@ class PostPictures(models.Model):
 class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     user = models.ForeignKey(BloggerProfile, default=1)
-    title = models.CharField(max_length=130, help_text="Max 130 char")
-    description = models.CharField(max_length=300, help_text="Max 300 char")
+    title = models.CharField(max_length=300, help_text="Max 130 char")
+    description = models.TextField(max_length=300, help_text="Max 300 char")
     keywords = models.CharField(max_length=500, help_text="Max 500 char")
     slug = models.SlugField(unique=True, blank=True, max_length=150)
     image = models.ImageField(upload_to=upload_location,
