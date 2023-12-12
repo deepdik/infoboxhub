@@ -36,7 +36,7 @@
 
 <meta property="og:title" content="{% block og_title %}{% endblock og_title %}">
 <meta property="og:description" content="{% block og_description %}{% endblock og_description %}">
-<meta property="og:url" content="{{ 'https://'|add:request.get_host|add:request.build_absolute_uri }}">
+<meta property="og:url" content="https://{{ request.get_host }}{{ request.path }}">
 <meta property="og:image" content="{% block fb_img_url %}{% endblock fb_img_url %}">
 <meta property="og:site_name" content="Infoboxhub">
 <meta property="og:type" content="article">
@@ -48,7 +48,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@Globalforumonl1">
 
-<meta name="twitter:creator" content="{{ 'https://'|add:request.get_host|add:request.build_absolute_uri }}">
+<meta name="twitter:creator" content="https://{{ request.get_host }}{{ request.path }}">
 
 <meta name="twitter:title" content="{% block tw_title %}{% endblock tw_title %}">
 <meta name="twitter:image" content="{% block tw_img_url %}{% endblock tw_img_url %}">
