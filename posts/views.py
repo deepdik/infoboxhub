@@ -115,7 +115,7 @@ def category_view(request, name):
     ).order_by('-viewed')[:5]  # Adjust the number as needed, here it's fetching the top 5
 
     latest_post = Post.objects.active().order_by('-publish').filter(category__url_keyword__iexact=name)
-    latest = latest_post[0]
+    latest = [latest_post[0]]
     queryset_list = Post.objects.active()
     query = request.GET.get("q")
     if query:
