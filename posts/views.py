@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 try:
     from urllib import quote_plus  # python 2
 except:
@@ -43,7 +45,15 @@ def post_detail(request, slug=None):
     instance.save()  #
 
     category_id = instance.category_id
-    most_popular = Post.objects.active().order_by('-viewed')[:5]
+
+    # Calculate the date 30 days ago from the current date
+    thirty_days_ago = timezone.now() - timedelta(days=30)
+
+    # Query to get the most popular blogs in the last 30 days
+    most_popular = Post.objects.active().filter(
+        publish__gte=thirty_days_ago,  # Posts published in the last 30 days
+    ).order_by('-viewed')[:5]  # Adjust the number as needed, here it's fetching the top 5
+
     latest_post = Post.objects.active().order_by('-publish').filter(category__id=category_id).exclude(slug=slug)
 
     queryset_list = Post.objects.active()
@@ -95,10 +105,17 @@ def post_detail(request, slug=None):
 
 def category_view(request, name):
     today = timezone.now().date()
-    latest = Post.objects.active().order_by('-publish').filter(category__url_keyword__iexact=name)[:1]
-    popular = Post.objects.active().order_by('-viewed')[:5]
-    latest_post = Post.objects.active().order_by('-publish').filter(category__url_keyword__iexact=name)
 
+    # Calculate the date 30 days ago from the current date
+    thirty_days_ago = timezone.now() - timedelta(days=30)
+
+    # Query to get the most popular blogs in the last 30 days
+    popular = Post.objects.active().filter(
+        publish__gte=thirty_days_ago,  # Posts published in the last 30 days
+    ).order_by('-viewed')[:5]  # Adjust the number as needed, here it's fetching the top 5
+
+    latest_post = Post.objects.active().order_by('-publish').filter(category__url_keyword__iexact=name)
+    latest = latest_post[0]
     queryset_list = Post.objects.active()
     query = request.GET.get("q")
     if query:
@@ -150,8 +167,15 @@ def category_view(request, name):
 
 def home_page(request):
     main_latest_post = Post.objects.active().order_by('-publish')[:1]
-    popular_post = Post.objects.active().order_by('-viewed')[:5]
+    # popular_post = Post.objects.active().order_by('-viewed')[:5]
     latest_post = Post.objects.active().order_by('-publish')
+    # Calculate the date 30 days ago from the current date
+    thirty_days_ago = timezone.now() - timedelta(days=30)
+
+    # Query to get the most popular blogs in the last 30 days
+    popular_post = Post.objects.active().filter(
+        publish__gte=thirty_days_ago,  # Posts published in the last 30 days
+    ).order_by('-viewed')[:5]  # Adjust the number as needed, here it's fetching the top 5
 
     queryset_list = Post.objects.active()
     query = request.GET.get("q")
@@ -166,9 +190,7 @@ def home_page(request):
         ).distinct()
 
     search_post_count = latest_post.count()
-
     paginator = Paginator(latest_post, 10)  # Show 25 contacts per page
-
     page = request.GET.get("page")
     try:
         queryset = paginator.page(page)
@@ -198,7 +220,16 @@ def home_page(request):
 
 def footer_view(request, footer=None):
     instance = get_object_or_404(FooterText, name=footer)
-    popular_post = Post.objects.active().order_by('-viewed')[:5]
+
+    # popular_post = Post.objects.active().order_by('-viewed')[:5]
+    # Calculate the date 30 days ago from the current date
+    thirty_days_ago = timezone.now() - timedelta(days=30)
+
+    # Query to get the most popular blogs in the last 30 days
+    popular_post = Post.objects.active().filter(
+        publish__gte=thirty_days_ago,  # Posts published in the last 30 days
+    ).order_by('-viewed')[:5]  # Adjust the number as needed, here it's fetching the top 5
+
     latest_post = Post.objects.active().order_by('-publish')
     queryset_list = Post.objects.active()
     query = request.GET.get("q")
